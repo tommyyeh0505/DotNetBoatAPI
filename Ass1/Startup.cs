@@ -29,6 +29,12 @@ namespace Ass1
         {
             services.AddDbContext<BoatContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors(o => o.AddPolicy("AccessPolicy", builder => {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowCredentials()
+                       .AllowAnyHeader();
+            }));
 
         }
 
@@ -47,7 +53,9 @@ namespace Ass1
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCors("AccessPolicy");
             DummyData.Initialize(app);
+
         }
     }
 }
