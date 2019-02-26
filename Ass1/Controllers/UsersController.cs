@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Ass1.Data;
 using Ass1.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace Ass1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AccessPolicy")]
     public class UsersController : ControllerBase
     {
         private readonly BoatContext _context;
