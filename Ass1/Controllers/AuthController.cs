@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Ass1.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Ass1.Controllers
 {
+    [EnableCors("AccessPolicy")]
     public class AuthController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;

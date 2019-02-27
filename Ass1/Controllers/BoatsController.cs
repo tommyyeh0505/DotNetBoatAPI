@@ -15,7 +15,6 @@ namespace Ass1.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("AccessPolicy")]
-    [Authorize]
     public class BoatsController : ControllerBase
     {
         private readonly BoatContext _context;
