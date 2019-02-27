@@ -33,7 +33,8 @@ namespace Ass1.Controllers
 
         // GET: api/Boats/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Boat>> GetBoat(string id)
+        [Authorize(Roles = "User, Admin")]
+        public async Task<ActionResult<Boat>> GetBoat(int id)
         {
             var boat = await _context.Boats.FindAsync(id);
 
@@ -47,7 +48,8 @@ namespace Ass1.Controllers
 
         // PUT: api/Boats/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBoat(string id, Boat boat)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> PutBoat(int id, Boat boat)
         {
             if (id != boat.BoatId)
             {
@@ -77,6 +79,7 @@ namespace Ass1.Controllers
 
         // POST: api/Boats
         [HttpPost]
+        [Authorize(Roles = "User, Admin")]
         public async Task<ActionResult<Boat>> PostBoat(Boat boat)
         {
             _context.Boats.Add(boat);
@@ -87,6 +90,7 @@ namespace Ass1.Controllers
 
         // DELETE: api/Boats/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Boat>> DeleteBoat(string id)
         {
             var boat = await _context.Boats.FindAsync(id);
@@ -101,7 +105,7 @@ namespace Ass1.Controllers
             return boat;
         }
 
-        private bool BoatExists(string id)
+        private bool BoatExists(int id)
         {
             return _context.Boats.Any(e => e.BoatId == id);
         }

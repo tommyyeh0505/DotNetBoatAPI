@@ -1,0 +1,45 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <table *ngIf="boats" border="1">
+      <thead>
+        <tr>
+          <th>Boat ID</th>
+          <th>Boat Name</th>
+          <th>Length In Feet</th>
+          <th>Make</th>
+          <th>Description</th>
+          <th>Picture</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr [class.selected]="c === selected" *ngFor="let c of boats; let i=index;" (click)="onSelect(c)">
+          
+          <td>{{c.BoatId}}</td>
+          <td>{{c.BoatName}}</td>
+          <td>{{c.LengthInFeet}}</td>
+          <td>{{c.Make}}</td>
+          <td>{{c.Description}}</td>
+          <td><img src="{{c.Picture}}" 
+            alt="{{c.BoatName}} {{c.LengthInFeet}}" /></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!--
+    <app-boat-detail [boat]="selected"></app-boat-detail>
+    -->
+  <router-outlet></router-outlet>
+  
+  <div *ngIf="selected">
+      <h2>
+        {{selected.Make | uppercase}} {{selected.BoatName | uppercase}}
+      </h2>
+      <button (click)="gotoDetail()">View Details</button>
+    </div>
+    
+    <div *ngIf="selected">
+        <h2>
+          {{selected.BoatName | uppercase}} {{selected.LengthInFeet | uppercase}} is favorite cartoon boat.
+        </h2>
+        <button (click)="gotoDetail()">View Details</button>
+      </div>

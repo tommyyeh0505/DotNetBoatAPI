@@ -1,0 +1,17 @@
+<div *ngIf="boat">
+    <p>Boat ID: {{boat.BoatId}}</p>
+    <p>Boat Name: {{boat.BoatName}}</p>
+    <p>Length In Feet: {{boat.LengthInFeet}}</p>
+    <p>Make: {{boat.Make}}</p>
+    <p>Description: {{boat.Description}}</p>
+    <p>Picture: <img src="{{boat.Picture}}" alt="{{boat.BoatName}} {{boat.LengthInFeet}}" /></p>
+    <div>
+      <p><label>Boat Name: </label><input [(ngModel)]="boat.BoatName" placeholder="BoatName"></p>
+      <p><label>Length In Feet: </label><input [(ngModel)]="boat.LengthInFeet" placeholder="LengthInFeet"></p>
+      <p><label>Make: </label><input [(ngModel)]="boat.Make" placeholder="Make"></p>
+      <p><label>Description: </label><input [(ngModel)]="boat.Description" placeholder="M or F"></p>
+      <p><label>Picture: </label><input [(ngModel)]="boat.Picture" placeholder="Picture"></p>
+    </div>
+    <button (click)="goBack()">Back</button>
+  </div>
+  

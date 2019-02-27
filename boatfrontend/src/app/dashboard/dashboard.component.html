@@ -1,0 +1,4 @@
+<h3>Boat List</h3>
+<a *ngFor="let c of boats"  [routerLink]="['/detail', c.BoatId]"  class="col-lg-4">
+  <p>{{c.Make}}{{c.BoatName}} </p>
+</a>
