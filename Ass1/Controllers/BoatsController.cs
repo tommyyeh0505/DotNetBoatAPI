@@ -7,11 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Ass1.Data;
 using Ass1.Models;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ass1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AccessPolicy")]
+    [Authorize]
     public class BoatsController : ControllerBase
     {
         private readonly BoatContext _context;
